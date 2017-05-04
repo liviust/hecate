@@ -480,6 +480,9 @@ void generate_highlight_clips( hecate_params& opt, vector<hecate::Range>& v_high
   char infile[512];
   char outfile[512];
   
+  if ( opt.info_sum ) {
+    printf("summaries: ");
+  }
   for( size_t i=0; i<v_highlight_range.size(); i++ )
   {
     int shotid = v_srt_idx[i];
@@ -488,6 +491,11 @@ void generate_highlight_clips( hecate_params& opt, vector<hecate::Range>& v_high
     double sec_duration = (double) (r.end-r.start) / fps;
     string start_pos = hecate::second2string( sec_from, "hh:mm:ss.mss" );
     string duration = hecate::second2string( sec_duration, "hh:mm:ss.mss" );
+    if ( opt.info_sum ) {
+      printf("[%f:%f]", sec_from, sec_duration + sec_from);
+      if ( i<v_highlight_range.size()-1 )
+        printf(",");
+    }
     
     // --------------------- VIDEO CLIP GENERATOR ---------------------
     if( opt.mov )
@@ -557,6 +565,9 @@ void generate_highlight_clips( hecate_params& opt, vector<hecate::Range>& v_high
       }
     }
     // --------------------- GIF CLIP GENERATOR ---------------------
+  }
+  if ( opt.info_sum ) {
+    printf("\n");
   }
   
   // Close filelist

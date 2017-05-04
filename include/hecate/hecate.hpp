@@ -73,6 +73,7 @@ struct hecate_params {
   bool gifall;          // generate all possible gifs (for debugging purpose)
   bool info_shot;       // print shot boundary info
   bool info_keyfrm;     // print key frame indices
+  bool info_sum;        // print summary info
   bool prefer_dynamic;  // if enabled, prefer dynamic scene in highlight
   bool gfl;             // run group-fused lasso as part of shot segmentation
   bool fade;            // disable fade-in/out during shot transition
@@ -101,6 +102,7 @@ struct hecate_params {
   gifall(false),
   info_shot(false),
   info_keyfrm(false),
+  info_sum(false),
   prefer_dynamic(true),
   gfl(false),
   fade(false),
@@ -134,6 +136,7 @@ inline void hecate_parse_params(int argc, char** argv, hecate_params& opt)
     {"generate_gifall",   no_argument, 0, 'A'},
     {"print_shot_info",   no_argument, 0, 'T'},
     {"print_keyfrm_info", no_argument, 0, 'K'},
+    {"print_sum_info",    no_argument, 0, 'E'},
     {"prefer_dynamic",    no_argument, 0, 'V'},
     {"gfl",               no_argument, 0, 'B'},
     {"fade",              no_argument, 0, 'F'},
@@ -172,6 +175,7 @@ inline void hecate_parse_params(int argc, char** argv, hecate_params& opt)
       case 'A': opt.gifall = opt.gif = true; break;
       case 'T': opt.info_shot        = true; break;
       case 'K': opt.info_keyfrm      = true; break;
+      case 'E': opt.info_sum         = true; break;
       case 'V': opt.prefer_dynamic   = true; break;
       case 'B': opt.gfl              = true; break;
       case 'F': opt.fade             = true; break;
@@ -218,6 +222,7 @@ inline void hecate_usage()
   printf("  --generate_gifall               Generate all possible animated GIFs\n");
   printf("  --print_shot_info               Print valid shot ranges\n");
   printf("  --print_keyfrm_info             Print keyframe indices\n");
+  printf("  --print_sum_info                Print summary ranges\n");
   
   exit(-1);
 }
