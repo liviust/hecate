@@ -55,6 +55,7 @@ USAGE: hecate -i infile [options]
   --generate_gifall               Generate all possible animated GIFs
   --print_shot_info               Print shot boundary detection results
   --print_keyfrm_info             Print keyframe indices
+  --print_sum_info                Print summary information (timelines)
 ```
 
 Congratulations! You have successfully installed hecate!
@@ -76,7 +77,7 @@ We will explain each case below.
 ### Shot boundary detection and keyframe extraction
 Shot boundary detection and keyframe extraction are often the first steps towards various video processing methods. With Hecate, obtaining shot and keyframe information is easier than ever! Simply run the following command to get the result:
 ```
-$ ./distribute/bin/hecate -i examples/video.mp4 --print_shot_info  --print_keyfrm_info
+$ ./distribute/bin/hecate -i examples/video.mp4 --print_shot_info  --print_keyfrm_info --print_sum_info
 ```
 
 Below is the results we obtained on our dev machine (OS X 10.10 with OpenCV v3.1):
